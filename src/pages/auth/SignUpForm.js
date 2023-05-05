@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
@@ -19,7 +19,7 @@ const SignUpForm = () => {
 
     const [errors, setErrors] = useState({})
 
-    const {username, password1, password2} = signUpData;
+    const { username, password1, password2 } = signUpData;
     const history = useHistory();
     const handleChange = (e) => {
         setSignUpData({
@@ -33,7 +33,7 @@ const SignUpForm = () => {
         try {
             await axios.post('/dj-rest-auth/registration/', signUpData)
             history.push('/signin')
-        } catch(err){
+        } catch (err) {
             setErrors(err.response?.data)
         }
     }
@@ -47,52 +47,52 @@ const SignUpForm = () => {
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="username">
                             <Form.Label className="d-none">Username</Form.Label>
-                            <Form.Control 
-                            className={styles.Input} 
-                            type="text" 
-                            placeholder="Enter a username" 
-                            name="username"
-                            value={username}
-                            onChange={handleChange}
+                            <Form.Control
+                                className={styles.Input}
+                                type="text"
+                                placeholder="Enter a username"
+                                name="username"
+                                value={username}
+                                onChange={handleChange}
                             />
                         </Form.Group>
                         {errors.username?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>{message}</Alert>
+                            <Alert variant="warning" key={idx}>{message}</Alert>
                         )}
 
                         <Form.Group controlId="password1">
                             <Form.Label className="d-none">Password</Form.Label>
-                            <Form.Control 
-                            className={styles.Input} 
-                            type="password" 
-                            placeholder="Password" 
-                            name="password1"
-                            value={password1}
-                            onChange={handleChange}
+                            <Form.Control
+                                className={styles.Input}
+                                type="password"
+                                placeholder="Password"
+                                name="password1"
+                                value={password1}
+                                onChange={handleChange}
                             />
                         </Form.Group>
                         {errors.password1?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>{message}</Alert>
+                            <Alert variant="warning" key={idx}>{message}</Alert>
                         )}
                         <Form.Group controlId="password2">
                             <Form.Label className="d-none">Confirm Password</Form.Label>
-                            <Form.Control 
-                            className={styles.Input} 
-                            type="password" 
-                            placeholder="Confirm Password" 
-                            name="password2" 
-                            value={password2}
-                            onChange={handleChange}
+                            <Form.Control
+                                className={styles.Input}
+                                type="password"
+                                placeholder="Confirm Password"
+                                name="password2"
+                                value={password2}
+                                onChange={handleChange}
                             />
                         </Form.Group>
                         {errors.password2?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>{message}</Alert>
+                            <Alert variant="warning" key={idx}>{message}</Alert>
                         )}
                         <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
                             Sign Up
                         </Button>
                         {errors.non_field_errors?.map((message, idx) =>
-                        <Alert variant="warning" key={idx} className="mt-3">{message}</Alert>
+                            <Alert variant="warning" key={idx} className="mt-3">{message}</Alert>
                         )}
                     </Form>
 
