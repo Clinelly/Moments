@@ -4,6 +4,17 @@ const baseURL = "https://drf-api-clinelly.herokuapp.com/"
 
 export const handlers = [
     rest.get(`${baseURL}dj-rest-auth/user/`, (res, req, ctx) => {
-        return res(ctx.json())
+        return res(ctx.json({
+            pk: 2,
+            username: "swalltest",
+            email: "",
+            first_name: "",
+            last_name: "",
+            profile_id: 2,
+            profile_image: "https://res.cloudinary.com/dbznc8xql/image/upload/v1/media/../default_profile_l4vfh5"
+        }));
+    }),
+    rest.post(`${baseURL}dj-rest-auth/logout/`, (req, res, ctx) => {
+        return res(ctx.status(200));
     })
 ]
