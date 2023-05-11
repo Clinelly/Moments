@@ -30,7 +30,7 @@ const Profile = (props) => {
                 </strong>
             </div>
             <div className={`text-right ${!mobile && 'ml-auto'}`}>
-                {!mobile && currentUser && !is_owner(
+                {!mobile && currentUser && !is_owner && (
                     following_id ? (
                         <Button className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
                             onClick={() => handleUnfollow(profile)}>Unfollow</Button>
